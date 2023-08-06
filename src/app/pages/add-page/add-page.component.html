@@ -1,0 +1,33 @@
+<div *ngIf="!loading" class="form-container">
+    <h2 style="text-align: center;" >New chat Form</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="chatName">Chat Name</label>
+        <input type="text" id="chatName" name="chatName" [(ngModel)]="chatName">
+      </div>
+      <div class="form-group">
+        <label for="chatDescription">Chat Description *</label>
+        <textarea id="chatDescription" name="chatDescription" [(ngModel)]="chatDescription" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="csvFile">Upload CSV for Database *</label>
+        <input type="file" id="csvFile" name="csvFile" (change)="onFileSelected($event)" accept=".csv" required>
+      </div>
+      <div class="form-group">
+        <label for="pdfFile">Upload PDFs for Pinecone</label>
+        <input type="file" id="pdfFile" name="pdfFile" (change)="onFileSelected($event)" accept=".pdf" required>
+      </div>
+      <div class="form-group">
+        <label for="pineconeDimension">Dimension</label>
+        <input readonly type="number" id="pineconeDimension" name="pineconeDimension" [(ngModel)]="pineconeDimension">
+      </div>
+      <div class="form-group">
+        <label for="chunkSize">Chunk size</label>
+        <input type="number" id="chunkSize" name="chunkSize" [(ngModel)]="chunkSize">
+      </div>
+      <button type="submit" >Submit</button>
+    </form>
+</div>  
+<div *ngIf="loading">
+  <h1 style="text-align: center; color: brown;">Loading...</h1>
+</div>

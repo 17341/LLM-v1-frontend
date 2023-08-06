@@ -1,0 +1,13 @@
+<div #chatContainer class="container">
+    <div class="chat-history">
+        <div *ngFor="let message of chatHistory" [ngClass]="{ 'user-message': message.user === 'user' }">
+            <p class="message-content">{{ message.user }} : {{ message.content }}</p>
+            <app-pie-chart *ngIf='message.chart' [options]="message.chart"></app-pie-chart>
+            <p *ngIf='message.insight' class="message-insight">{{ message.insight }}</p>
+        </div>
+    </div>
+    <div class="input-container">
+        <input [(ngModel)]="inputValue" (keyup.enter)="sendMessage()" placeholder="Ask your question ..." />
+        <button (click)="sendMessage()" [disabled]="isLoading">Send</button>
+    </div>
+</div>

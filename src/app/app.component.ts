@@ -14,7 +14,7 @@ import {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'cdrp';
+  title = 'llm-v1-frontend';
   loading = true;
 
   constructor(
